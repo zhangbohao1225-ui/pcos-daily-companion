@@ -8,12 +8,20 @@ import Home from "./pages/Home";
 import CalendarPage from "./pages/CalendarPage";
 import ProfilePage from "./pages/ProfilePage";
 import InsightsPage from "./pages/InsightsPage";
+import CheckinPage from "./pages/CheckinPage";
+import TeamPage from "./pages/TeamPage";
+import ForumPage from "./pages/ForumPage";
+import GrowthPage from "./pages/GrowthPage";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/checkin"} component={CheckinPage} />
+      <Route path={"/team"} component={TeamPage} />
+      <Route path={"/forum"} component={ForumPage} />
+      <Route path={"/growth"} component={GrowthPage} />
       <Route path={"/calendar"} component={CalendarPage} />
       <Route path={"/profile"} component={ProfilePage} />
       <Route path={"/insights"} component={InsightsPage} />
