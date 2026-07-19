@@ -154,7 +154,7 @@
     background: linear-gradient(135deg, #fff1ed 0%, #ffe6df 48%, #fde9ef 100%);
   }
   .warm-kicker { color: #c66a62; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; }
-  .warm-title { color: #5d3533; font-family: Georgia, "Noto Serif SC", "Songti SC", serif; letter-spacing: -0.04em; }
+  .warm-title { color: #5d3533; font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif; font-weight: 700; letter-spacing: -0.035em; }
   .pet-float { animation: pet-float 4.5s ease-in-out infinite; }
   .pet-pulse { animation: pet-pulse 2.6s ease-in-out infinite; }
   @keyframes pet-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-8px) rotate(1deg); } }
