@@ -24,7 +24,7 @@ const formatDate = (value: Date) => value.toISOString().slice(0, 10);
 
 function Companion({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={`relative ${compact ? "h-28 w-28" : "h-44 w-44 sm:h-52 sm:w-52"}`} aria-label="暖巢陪伴精灵团团" role="img">
+    <div className={`relative ${compact ? "h-28 w-28" : "h-44 w-44 sm:h-52 sm:w-52"}`} aria-label="Suta陪伴精灵团团" role="img">
       <span className="pet-pulse absolute inset-2 rounded-full bg-[#ffb4a8]/35 blur-2xl" />
       <span className="pet-float absolute inset-0 flex items-center justify-center">
         <span className={`relative flex items-center justify-center rounded-[48%_52%_52%_48%] bg-gradient-to-br from-[#fff8f1] via-[#ffd7ce] to-[#f6a7a3] shadow-[inset_-8px_-10px_18px_rgba(216,100,101,0.15),0_22px_40px_rgba(197,94,91,0.22)] ${compact ? "h-24 w-24" : "h-36 w-36 sm:h-44 sm:w-44"}`}>
@@ -61,7 +61,7 @@ export default function Home() {
       <div className="mx-auto max-w-7xl space-y-6 pb-8">
         <header className="flex flex-wrap items-end justify-between gap-4 pt-1">
           <div>
-            <p className="warm-kicker">NEST WELL · WARM COMPANION</p>
+            <p className="warm-kicker">SUTA · WARM COMPANION</p>
             <h1 className="warm-title mt-1 text-3xl sm:text-4xl">早安，{displayName}</h1>
             <p className="mt-2 text-sm text-[#9a6d68]">{greeting} · 今天也让身体被好好照顾。</p>
           </div>
