@@ -1,0 +1,40 @@
+<view class="page" wx:if="{{dashboard}}">
+  <view class="brand-row">
+    <image class="brand-mark" src="/assets/tutu-single.svg" mode="aspectFit" />
+    <view class="brand-copy"><view class="brand-name">SUTA</view><text>女性健康温柔日记</text></view>
+  </view>
+
+  <view class="daily-hero" data-url="/pages/checkin/index" bindtap="goTab">
+    <image class="daily-background" src="/assets/home-iris-hero.png" mode="aspectFill" />
+    <view class="daily-copy">
+      <view class="daily-kicker">DAILY CHECK-IN</view>
+      <view class="daily-title">今天，身体感觉怎么样？</view>
+      <view class="daily-subtitle">{{displayDate}} · 真实地记录就很好。</view>
+    </view>
+  </view>
+
+  <view class="welcome-card">
+    <view class="welcome-copy"><view class="kicker">TODAY · GENTLE CARE</view><view class="welcome-title">{{greeting}}，{{profile.displayName}}</view><view class="muted">{{displayDate}} · 今天也不必追赶任何人。</view></view>
+    <view class="score"><text>{{dashboard.score}}</text><text class="score-unit">分</text></view>
+  </view>
+
+  <view class="card">
+    <view class="between"><view class="section-title">今天的小关照</view><button class="text-btn checkin-link-btn" data-url="/pages/checkin/index" bindtap="goTab">去打卡</button></view>
+    <view class="progress"><view class="progress-fill" style="width: {{dashboard.score}}%"></view></view>
+    <view class="muted">已经完成 {{dashboard.completed}} / {{dashboard.total}} 件，每一件都算数。</view>
+    <view class="task-grid">
+      <view class="task {{item.completed ? 'done' : ''}}" wx:for="{{dashboard.templates}}" wx:key="id" data-id="{{item.id}}" bindtap="goCheckinItem">
+        <image class="task-icon task-art" src="{{item.art}}" mode="aspectFit"/><text>{{item.name}}</text><text class="task-state">{{item.completed ? '已完成 · 可修改' : '点击去打卡'}}</text><text class="task-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title block-title">温柔工具</view>
+  <view class="shortcut-grid">
+    <view class="shortcut coral" data-url="/pages/insights/index" bindtap="goTab"><image class="big-icon scene-art" src="/assets/tutu-doctor-painted.png" mode="aspectFit"/><text class="shortcut-title">AI 健康顾问</text><text class="shortcut-copy">温和地聊聊健康问题</text></view>
+    <view class="shortcut cream" data-url="/pages/team/index" bindtap="go"><image class="big-icon scene-art" src="/assets/tutu-team-painted.png" mode="aspectFit"/><text class="shortcut-title">组队打卡</text><text class="shortcut-copy">不比较，只陪伴</text></view>
+    <view class="shortcut peach" data-url="/pages/forum/index" bindtap="goTab"><image class="big-icon scene-art" src="/assets/tutu-forum-painted.png" mode="aspectFit"/><text class="shortcut-title">论坛</text><text class="shortcut-copy">分享温柔的小进展</text></view>
+    <view class="shortcut period-tool" data-url="/pages/calendar/index" bindtap="go"><image class="big-icon scene-art period-art" src="/assets/tutu-period-painted.png" mode="aspectFit"/><text class="shortcut-title">经期记录</text><text class="shortcut-copy">记录周期，并查看未来日期预测</text><text class="shortcut-arrow">进入 ›</text></view>
+    <view class="shortcut lilac" data-url="/pages/education/index" bindtap="go"><image class="big-icon scene-art" src="/assets/tutu-teacher-painted.png" mode="aspectFit"/><text class="shortcut-title">健康科普</text><text class="shortcut-copy">了解身体的节律</text></view>
+  </view>
+</view>

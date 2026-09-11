@@ -1,0 +1,1 @@
+Page({ data: { type: 'privacy' }, onLoad(options) { const type = options.type === 'service' ? 'service' : 'privacy'; this.setData({ type }); wx.setNavigationBarTitle({ title: type === 'service' ? 'SUTA 服务协议' : 'SUTA 隐私协议' }) } })

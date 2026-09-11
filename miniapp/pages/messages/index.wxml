@@ -1,0 +1,9 @@
+<view class="page messages-page">
+  <view class="messages-hero"><view><text>SUTA LETTERS</text><view>私信</view><text>只属于你和同伴的温柔对话</text></view><image src="/assets/tutu-forum-painted.png" mode="aspectFit"/></view>
+  <view class="loading" wx:if="{{loading}}">正在收取私信…</view>
+  <view class="state" wx:elif="{{failed}}"><image src="/assets/tutu-single.svg" mode="aspectFit"/><view>私信暂时没有送达</view><button bindtap="load">再试一次</button></view>
+  <view class="thread-list" wx:elif="{{threads.length}}">
+    <button class="thread" wx:for="{{threads}}" wx:key="id" data-id="{{item.id}}" bindtap="open"><image src="{{item.other.avatarUrl || '/assets/tutu-single.svg'}}" mode="aspectFill"/><view class="thread-copy"><view class="thread-top"><text>{{item.other.displayName}}</text><text>{{item.timeText}}</text></view><view class="thread-bottom"><text>{{item.lastMessage}}</text><text class="unread" wx:if="{{item.unread}}">{{item.unread > 99 ? '99+' : item.unread}}</text></view></view></button>
+  </view>
+  <view class="state" wx:else><image src="/assets/tutu-forum-painted.png" mode="aspectFit"/><view class="state-title">还没有私信</view><text>关注同伴后，可以从对方主页发起私信。</text><button bindtap="goForum">去论坛看看</button></view>
+</view>

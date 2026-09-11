@@ -1,0 +1,24 @@
+{
+  "description": "SUTA 完整版开发项目，需匹配主体与类目后发布",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "coverView": true,
+    "showShadowRootInWxmlPanel": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "trial",
+  "appid": "wxfc906ae3508f193a",
+  "projectname": "SUTA-full-development",
+  "miniprogramRoot": "./",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "simulatorType": "wechat",
+  "condition": {},
+  "isGameTourist": false
+}

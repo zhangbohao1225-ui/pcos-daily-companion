@@ -1,0 +1,74 @@
+<view class="advisor-page">
+  <view class="advisor-header">
+    <view>
+      <view class="kicker">SUTA AI · PERSONAL HEALTH</view>
+      <view class="title">AI 健康顾问</view>
+      <view class="subtitle">结合你的目标和近期记录，陪你找到温和、可执行的下一步。</view>
+    </view>
+    <view class="privacy-pill">仅用于个人健康管理</view>
+  </view>
+
+  <view class="advisor-hero">
+    <view class="hero-copy">
+      <view class="hero-eyebrow">认识你，建议才会更贴近你</view>
+      <view class="hero-title">有问题就慢慢说，团团在这里听。</view>
+      <view class="hero-caption">AI 会参考个人目标与近 7 天的最小化摘要，不会读取经期、症状和私密备注。</view>
+    </view>
+    <image class="hero-tutu" src="/assets/tutu-doctor-painted.png" mode="aspectFit" />
+  </view>
+
+  <view class="mode-grid">
+    <view class="mode-card {{item.id === activeMode ? 'active' : ''}}" wx:for="{{modes}}" wx:key="id" data-id="{{item.id}}" bindtap="chooseMode">
+      <image class="mode-icon mode-art" src="{{item.art}}" mode="aspectFit" />
+      <view class="mode-title">{{item.title}}</view>
+      <view class="mode-caption">{{item.caption}}</view>
+    </view>
+  </view>
+
+  <view class="summary-strip" wx:if="{{summary}}">
+    <view><text>{{summary.healthScore}}%</text><label>近 7 天完成度</label></view>
+    <view><text>{{summary.daily.length}}</text><label>参考天数</label></view>
+    <view><text>{{summary.dimensions.length}}</text><label>健康维度</label></view>
+  </view>
+
+  <view class="chat-card">
+    <view class="chat-head">
+      <view class="assistant-title"><image class="assistant-avatar assistant-avatar-image" src="/assets/tutu-doctor-painted.png" mode="aspectFit" /><view><text>{{activeModeTitle}}</text><label>安全、温和、不过度解读</label></view></view>
+      <button class="new-chat" wx:if="{{messages.length}}" bindtap="clearChat">新对话</button>
+    </view>
+
+    <scroll-view class="messages" scroll-y enhanced show-scrollbar="{{false}}" scroll-into-view="{{lastMessageId}}">
+      <view class="empty-chat" wx:if="{{!messages.length}}">
+        <image src="/assets/tutu-doctor-painted.png" mode="aspectFit" />
+        <view>从一个你最在意的小问题开始</view>
+        <view class="prompt-list">
+          <view class="prompt-item" hover-class="prompt-item-active" wx:for="{{suggestedPrompts}}" wx:key="*this" data-index="{{index}}" bindtap="onPresetTap">{{item}}</view>
+        </view>
+      </view>
+
+      <block wx:for="{{messages}}" wx:key="id">
+        <view id="{{item.id}}" class="message-row {{item.role}}" wx:if="{{item.content}}">
+          <image class="message-avatar message-avatar-image" wx:if="{{item.role === 'assistant'}}" src="/assets/tutu-doctor-painted.png" mode="aspectFit" />
+          <view class="bubble">
+            <text selectable>{{item.content}}</text>
+            <view class="model" wx:if="{{item.model}}">{{item.model}}</view>
+            <button class="consent-action" wx:if="{{item.action === 'consent'}}" bindtap="grantConsentAndRetry">同意并继续</button>
+          </view>
+        </view>
+      </block>
+
+      <view class="message-row assistant" wx:if="{{loading}}">
+        <image class="message-avatar message-avatar-image" src="/assets/tutu-doctor-painted.png" mode="aspectFit" />
+        <view class="bubble typing"><text></text><text></text><text></text></view>
+      </view>
+    </scroll-view>
+
+    <view class="ai-error" wx:if="{{aiError}}"><text>{{aiError}}</text><view catchtap="clearAiError">知道了</view></view>
+    <form class="composer" bindsubmit="onSend">
+      <textarea class="composer-input" name="question" maxlength="800" auto-height value="{{draft}}" bindinput="setDraft" bindconfirm="onConfirm" confirm-type="send" placeholder="说说你想了解的健康问题……" disabled="{{loading}}" />
+      <button class="send-btn {{loading ? 'sending' : ''}}" hover-class="send-btn-active" form-type="submit" disabled="{{loading}}" aria-label="发送健康问题">{{loading ? '回答中' : '发送'}}</button>
+    </form>
+  </view>
+
+  <view class="safety-note">AI 提供的是日常健康信息，不是诊断或处方。出现严重或紧急症状时，请及时联系急救服务或就近就医。</view>
+</view>

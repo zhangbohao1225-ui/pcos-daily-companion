@@ -1,0 +1,49 @@
+<view class="page" wx:if="{{dashboard}}">
+  <view class="checkin-hero"><view class="checkin-copy"><view class="kicker">DAILY CHECK-IN</view><view class="title">今天，身体感觉怎么样？</view><view class="subtitle">{{displayDate}} · 真实地记录就很好。</view></view><image class="tutu-standing" src="/assets/tutu-single.svg" mode="aspectFit" /></view>
+  <view class="team-checkin-entry" bindtap="goTeam"><view class="team-entry-icon"><image src="/assets/tutu-team-painted.png" mode="aspectFit"/></view><view class="team-entry-copy"><view>进入组队打卡</view><text>看看队友今日进度，互相留一句温柔鼓励</text></view><view class="team-entry-arrow">›</view></view>
+  <view class="card">
+    <view class="between"><view class="section-title">今日小关照</view><view class="tag">{{dashboard.completed}}/{{dashboard.total}}</view></view>
+    <view class="check-list">
+      <view class="check-item {{item.completed ? 'checked' : ''}}" wx:for="{{dashboard.templates}}" wx:key="id" data-id="{{item.id}}" bindtap="openEditor">
+        <image class="check-icon check-art" src="{{item.art}}" mode="aspectFit"/><view class="check-copy"><view>{{item.name}}</view></view><view class="checkbox">{{item.completed ? '✓' : '›'}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="card">
+    <view class="section-title">身体与情绪</view>
+    <view class="picker-row"><text>疼痛感受</text><picker range="{{painOptions}}" value="{{painIndex}}" bindchange="setPain"><view class="picker-value">{{painOptions[painIndex]}} ›</view></picker></view>
+    <view class="picker-row"><text>此刻情绪</text><picker range="{{moodOptions}}" value="{{moodIndex}}" bindchange="setMood"><view class="picker-value">{{moodOptions[moodIndex]}} ›</view></picker></view>
+    <view class="picker-row"><text>精力状态</text><picker range="{{energyOptions}}" value="{{energyIndex}}" bindchange="setEnergy"><view class="picker-value">{{energyOptions[energyIndex]}} ›</view></picker></view>
+    <textarea class="textarea note" maxlength="300" value="{{note}}" bindinput="setNote" placeholder="写下今天想记住的感受……" />
+    <button class="primary-btn save" bindtap="saveDetails">保存今日记录</button>
+  </view>
+
+  <view class="modal-mask" wx:if="{{activeTask}}" bindtap="closeEditor" catchtouchmove="noop">
+    <view class="editor-card" catchtap="noop">
+      <view class="editor-head"><image class="editor-icon check-art" src="{{activeTask.art}}" mode="aspectFit"/><view><view class="section-title">{{activeTask.name}}</view><view class="muted">如实记录就算完成，没有标准答案。</view></view></view>
+      <view class="editor-body">
+        <view class="field-label" wx:if="{{editorNeedsValue}}">{{editorValueLabel}}</view>
+        <view class="value-input" wx:if="{{editorNeedsValue}}"><input type="digit" value="{{editorValue}}" bindinput="setEditorValue" placeholder="请输入"/><text>{{editorUnit}}</text></view>
+        <view class="field-label">{{editorChoiceLabel}}</view>
+        <picker range="{{editorOptions}}" value="{{editorChoiceIndex}}" bindchange="setEditorChoice"><view class="choice-picker">{{editorOptions[editorChoiceIndex]}} <text>⌄</text></view></picker>
+        <view class="field-label">留一句备注 <text>（选填）</text></view>
+        <textarea class="textarea editor-note" maxlength="200" value="{{editorNote}}" bindinput="setEditorNote" placeholder="写下今天想记住的小细节……"/>
+      </view>
+      <view class="editor-actions"><button class="secondary-btn" bindtap="closeEditor">先不记录</button><button class="primary-btn" bindtap="completeTask">完成打卡</button></view>
+      <button class="remove-record" wx:if="{{activeTask.completed}}" bindtap="removeTask">取消本项今日记录</button>
+    </view>
+  </view>
+
+  <view class="celebration-mask" wx:if="{{celebration}}" catchtouchmove="noop">
+    <view class="celebration-card">
+      <view class="spark spark-one">✦</view><view class="spark spark-two">✦</view><view class="spark spark-three">●</view>
+      <view class="celebration-title">{{celebration.title}}</view>
+      <image class="celebration-tutu" src="/assets/tutu-single.svg" mode="aspectFit"/>
+      <view class="celebration-message">{{celebration.message}}</view>
+      <view class="celebration-progress"><view style="width: {{celebration.percent}}%"></view></view>
+      <view class="celebration-count">今天已完成 {{celebration.completed}} / {{celebration.total}} 项关照</view>
+      <button class="team-link" bindtap="goTeam">看看队友今天的进度</button>
+      <button class="celebration-button" bindtap="closeCelebration">收下这份小庆祝</button>
+    </view>
+  </view>
+</view>

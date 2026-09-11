@@ -1,0 +1,34 @@
+.forum-page { background: linear-gradient(180deg,#fff3f4 0%,#fff9f7 38%,#fffdf9 100%); }
+.category-tabs { width: 100%; margin: 20rpx 0; white-space: nowrap; }
+.category-row { display: inline-flex; gap: 14rpx; padding: 0 4rpx; }
+.category-tab { flex: none; min-width: auto; margin: 0; padding: 12rpx 24rpx; border-radius: 999rpx; background: #fff8f5; color: #956d69; font-size: 24rpx; line-height: 1.2; border: 1rpx solid #f3d7d1; }
+.category-tab::after, .image-picker::after, .remove-image::after { border: 0; }
+.category-tab.active { background: #df7370; color: #fff; border-color: #df7370; }
+.post-category { display: flex; align-items: center; gap: 10rpx; width: fit-content; padding: 10rpx 18rpx; margin-bottom: 16rpx; border-radius: 999rpx; background: #fff3ee; color: #9f6b66; font-size: 23rpx; }
+.post-category text:first-child { color: #d86466; font-weight: 600; }
+.post-category-tag { display: inline-flex; margin: 16rpx 0 4rpx; padding: 6rpx 14rpx; border-radius: 999rpx; background: #fff1ec; color: #c96463; font-size: 21rpx; }
+.picked-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12rpx; margin-top: 18rpx; }
+.picked-image-wrap { position: relative; height: 180rpx; }
+.picked-image { width: 100%; height: 100%; border-radius: 18rpx; }
+.remove-image { position: absolute; right: 6rpx; top: 6rpx; width: 42rpx; height: 42rpx; padding: 0; margin: 0; border-radius: 50%; background: rgba(70,45,45,.72); color: #fff; font-size: 30rpx; line-height: 40rpx; }
+.image-picker { width: auto; min-width: 150rpx; padding: 10rpx 16rpx; margin: 0; background: #fff5f1; color: #bd6564; border: 1rpx solid #f0d2ca; border-radius: 18rpx; font-size: 23rpx; line-height: 1.5; }
+.publish-area { display: flex; align-items: center; gap: 18rpx; }
+.post-image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8rpx; margin-top: 18rpx; }
+.post-image-grid.count-1 { grid-template-columns: minmax(0, 430rpx); }
+.post-image-grid.count-2 { grid-template-columns: repeat(2, 1fr); }
+.post-image { width: 100%; height: 190rpx; border-radius: 18rpx; background: #fff5f2; }
+.post-image-grid.count-1 .post-image { height: 390rpx; }
+.heart-btn.liked { color: #df4e59; font-weight: 700; }
+.empty-forum { padding: 80rpx 20rpx; text-align: center; color: #a8837d; }
+.comment-avatar.image { overflow: hidden; }
+.forum-hero { position: relative; min-height: 310rpx; overflow: hidden; border: 2rpx solid rgba(255,255,255,.88); border-radius: 36rpx; background: linear-gradient(135deg,#ec7880 0%,#e66d79 52%,#ee98a5 100%); box-shadow: 0 22rpx 52rpx rgba(183,74,91,.21); }
+.forum-hero::after { position: absolute; z-index: 1; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(90deg,rgba(216,86,104,.95) 0%,rgba(225,101,117,.76) 48%,rgba(244,170,177,.18) 100%); content: ''; }
+.forum-hero-art { position: absolute; z-index: 0; top: 8rpx; right: -8rpx; width: 420rpx; height: 294rpx; opacity: .9; }
+.forum-hero-copy { position: relative; z-index: 2; width: 61%; padding: 38rpx 8rpx 34rpx 34rpx; }
+.forum-hero .kicker { color: rgba(255,255,255,.82); }
+.forum-title { margin-top: 12rpx; color: #fff; font-size: 54rpx; font-weight: 800; }
+.forum-subtitle { margin-top: 20rpx; color: rgba(255,255,255,.9); font-size: 23rpx; line-height: 1.65; }
+.composer .textarea { background: #fff; }.compose-foot { margin-top: 16rpx; }.publish { width: 150rpx; min-height: 68rpx; font-size: 24rpx; }.post-head { display: flex; width: 100%; align-items: center; }.author { display: flex; min-width: 0; flex: 1; align-items: center; gap: 14rpx; }.author-copy { min-width: 0; }.avatar { display: flex; width: 68rpx; height: 68rpx; flex: none; align-items: center; justify-content: center; overflow: hidden; border-radius: 50%; background: #ffe7e0; color: #c36561; font-weight: 700; }.avatar-image { display: block; object-fit: cover; }.author text { display: block; color: #ae8a83; font-size: 20rpx; }.author .edited-time { margin-top: 3rpx; color: #c17470; }.report { min-width: 62rpx; margin: 0 0 0 auto; flex: none; color: #b69a94; text-align: center; }.manage-btn { min-width: 92rpx; padding: 9rpx 18rpx; border: 1rpx solid #edc9c4; border-radius: 999rpx; background: #fff1ee; color: #bd6662; font-weight: 700; letter-spacing: 0; }.more-btn { padding: 8rpx 4rpx 8rpx 18rpx; letter-spacing: 3rpx; }.content { margin-top: 24rpx; color: #74504c; font-size: 28rpx; line-height: 1.8; }.post-actions { display: flex; gap: 30rpx; margin-top: 22rpx; padding-top: 18rpx; border-top: 1rpx solid #f5e6e1; }.liked { color: #d66466; }.discuss-btn { color: #9a718c; }.discussion { margin-top: 20rpx; padding: 22rpx; border-radius: 24rpx; background: #fff8f6; }.discussion-title { color: #78524e; font-size: 24rpx; font-weight: 700; }.comment { display: flex; gap: 13rpx; margin-top: 18rpx; }.comment-avatar { display: flex; align-items: center; justify-content: center; width: 48rpx; height: 48rpx; flex: none; border-radius: 50%; background: #f1e8fa; color: #8067a0; font-size: 20rpx; }.comment-body { min-width: 0; flex: 1; color: #795854; font-size: 23rpx; line-height: 1.6; }.comment-meta { display: flex; justify-content: space-between; gap: 12rpx; margin-bottom: 4rpx; }.comment-meta text:first-child { color: #bd6662; font-weight: 600; }.comment-meta text:last-child { color: #b2948e; font-size: 17rpx; }.empty-comments { padding: 22rpx 0 4rpx; color: #a78983; font-size: 21rpx; text-align: center; }.comment-composer { display: flex; align-items: center; gap: 10rpx; margin-top: 20rpx; }.comment-composer input { height: 70rpx; flex: 1; padding: 0 18rpx; border: 1rpx solid #ecd7d1; border-radius: 18rpx; background: #fff; color: #72504c; font-size: 22rpx; }.comment-composer button { width: 112rpx; min-height: 70rpx; margin: 0; padding: 0; border-radius: 18rpx; background: #e67a78; color: #fff; font-size: 22rpx; }.safety { padding: 34rpx 20rpx 0; color: #b0928c; text-align: center; font-size: 21rpx; }
+.edit-notice { display: flex; align-items: center; justify-content: space-between; gap: 18rpx; margin-bottom: 16rpx; padding: 14rpx 17rpx; border-radius: 18rpx; background: #fff0ed; color: #9f5c59; font-size: 21rpx; }
+.edit-notice button { flex: none; font-size: 20rpx; }
+.cloud-error { display: flex; align-items: center; justify-content: space-between; gap: 18rpx; margin-top: 22rpx; padding: 18rpx 20rpx; border: 1rpx solid #efcfc7; border-radius: 22rpx; background: #fff4f0; color: #a45e59; font-size: 21rpx; line-height: 1.5; }.cloud-error text { flex: 1; }.cloud-error button { width: 132rpx; min-height: 58rpx; margin: 0; padding: 0; border-radius: 18rpx; background: #df7472; color: #fff; font-size: 20rpx; line-height: 58rpx; }

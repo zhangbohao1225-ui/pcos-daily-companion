@@ -1,0 +1,2 @@
+const store = require('../../utils/store.js')
+Page({ data: { wallet: {} }, onShow() { this.setData({ wallet: store.ensureState().wallet }) }, recharge() { wx.showModal({ title: '充值功能准备中', content: '当前尚未绑定微信支付商户号。正式上线支付前，需要完成小程序认证、商户号绑定、服务端下单和订单验签，不能直接用前端模拟充值。', showCancel: false, confirmText: '知道了' }) }, joinPro() { wx.showModal({ title: 'SUTA Pro 尚未开售', content: '会员权益先展示，购买入口会在微信支付和退款规则配置完成后开放。', showCancel: false }) } })

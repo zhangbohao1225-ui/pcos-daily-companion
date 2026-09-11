@@ -1,0 +1,10 @@
+<view class="page connections-page">
+  <view class="relation-hero"><view class="kicker">SUTA CONNECTIONS</view><view class="hero-title">关注与粉丝</view><view class="hero-copy">看见每一份温柔连接，也可以随时管理自己的关注。</view></view>
+  <view class="relation-tabs"><button class="{{type === 'following' ? 'active' : ''}}" data-type="following" bindtap="changeType"><text>{{followingCount}}</text><view>我的关注</view></button><button class="{{type === 'followers' ? 'active' : ''}}" data-type="followers" bindtap="changeType"><text>{{followerCount}}</text><view>我的粉丝</view></button></view>
+  <view class="loading" wx:if="{{loading}}">正在整理关系名单…</view>
+  <view class="failed" wx:elif="{{failed}}"><image src="/assets/tutu-single.svg" mode="aspectFit"/><view>名单暂时没有加载出来</view><button bindtap="load">再试一次</button></view>
+  <view class="connection-list" wx:elif="{{connections.length}}">
+    <view class="connection" wx:for="{{connections}}" wx:key="ownerId"><view class="person" data-id="{{item.ownerId}}" bindtap="openProfile"><image src="{{item.avatarUrl || '/assets/tutu-single.svg'}}" mode="aspectFill"/><view><view>{{item.displayName}}</view><text>{{item.publicId}}</text></view></view><button class="follow-button {{item.isFollowing ? 'followed' : ''}}" loading="{{actingId === item.ownerId}}" data-id="{{item.ownerId}}" catchtap="toggleFollow">{{item.isFollowing ? '已关注' : '+ 关注'}}</button></view>
+  </view>
+  <view class="empty" wx:else><image src="/assets/tutu-forum-painted.png" mode="aspectFit"/><view>{{type === 'following' ? '还没有关注任何同伴' : '还没有同伴关注你'}}</view><text>{{type === 'following' ? '去论坛看看感兴趣的分享吧。' : '发布真诚的分享，会慢慢遇见同伴。'}}</text></view>
+</view>

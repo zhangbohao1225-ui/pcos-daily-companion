@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="kicker">YOUR RHYTHM</view><view class="title">健康日历</view><view class="subtitle">不是连续打卡比赛，只是帮你看见自己的生活节律。</view>
+  <view class="card period-control">
+    <image class="period-control-art" src="/assets/tutu-period-painted.png" mode="aspectFit" />
+    <view class="period-control-copy"><view class="section-title">经期记录</view><view class="muted">{{activePeriod ? '本次经期从 ' + activePeriod + ' 开始，记得多休息' : '只在你需要时记录，用于生成周期趋势参考'}}</view><button class="primary-btn period-control-btn" bindtap="togglePeriod">{{activePeriod ? '结束本次经期' : '今天是经期第一天'}}</button></view>
+  </view>
+  <view class="summary-grid"><view class="summary"><text>{{completedDays}}</text><view>有记录的日子</view></view><view class="summary"><text>{{average}}%</text><view>近30日完成度</view></view></view>
+  <view class="card">
+    <view class="between"><view class="section-title">最近 30 天</view><view class="legend"><view class="dot low"></view><view class="dot mid"></view><view class="dot high"></view></view></view>
+    <view class="calendar-grid"><view class="day {{item.level}}" wx:for="{{history}}" wx:key="date"><text>{{item.label}}</text><text class="day-count">{{item.completed}}/{{item.total}}</text></view></view>
+  </view>
+  <view class="card cycle-prediction">
+    <view class="between"><view><view class="section-title">未来周期预测</view><view class="muted" wx:if="{{prediction.length}}">依据 {{predictionBasedOn}} 的最近记录推算</view></view><view class="cycle-mark">◌</view></view>
+    <block wx:if="{{prediction.length}}">
+      <view class="cycle-meta"><text>参考周期 {{cycleLength}} 天</text><text>参考经期 {{periodLength}} 天</text></view>
+      <view class="phase-legend"><text class="menstrual-dot">经期</text><text class="follicular-dot">卵泡期</text><text class="ovulation-dot">排卵期</text><text class="luteal-dot">黄体期</text></view>
+      <scroll-view class="prediction-scroll" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <view class="prediction-row">
+          <view class="prediction-day {{item.phase}} {{item.isToday ? 'today' : ''}}" wx:for="{{prediction}}" wx:key="date">
+            <text class="week">{{item.isToday ? '今天' : '周' + item.weekday}}</text><text class="number">{{item.day}}</text><text class="phase-name">{{item.phaseName}}</text>
+          </view>
+        </view>
+      </scroll-view>
+      <view class="prediction-note">周期阶段来自趋势估算，PCOS 周期可能不规律。预测不能用于避孕、诊断或判断实际排卵。</view>
+    </block>
+    <view class="prediction-empty" wx:else>先在上方记录一次经期开始日期，之后这里会显示未来日期的周期阶段预测。</view>
+  </view>
+  <view class="card"><view class="section-title">给自己的提醒</view><view class="tip">记录有空白很正常。身体不是项目进度表，回来继续就好。</view></view>
+</view>

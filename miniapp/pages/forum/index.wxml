@@ -1,0 +1,23 @@
+<view class="page forum-page">
+  <view class="forum-hero">
+    <image class="forum-hero-art" src="/assets/tutu-forum-painted.png" mode="aspectFit" />
+    <view class="forum-hero-copy"><view class="kicker">SUTA FORUM</view><view class="forum-title">论坛</view><view class="forum-subtitle">分享生活里的小进展。这里没有比较，只留下温柔的回应。</view></view>
+  </view>
+  <view class="cloud-error" wx:if="{{cloudError}}"><text>{{cloudError}}</text><button bindtap="retry">重新连接</button></view>
+  <scroll-view class="category-tabs" scroll-x enhanced show-scrollbar="{{false}}"><view class="category-row"><button wx:for="{{categories}}" wx:key="*this" class="category-tab {{activeCategory === item ? 'active' : ''}}" data-category="{{item}}" bindtap="filterCategory">{{item}}</button></view></scroll-view>
+  <view class="card composer">
+    <view class="edit-notice" wx:if="{{editingPostId}}"><text>正在重新编辑自己的帖子</text><button class="text-btn" bindtap="cancelEdit">取消编辑</button></view>
+    <picker range="{{postCategories}}" value="{{categoryIndex}}" bindchange="setCategory"><view class="post-category">分类：<text>{{postCategories[categoryIndex]}}</text><text>⌄</text></view></picker>
+    <textarea class="textarea" maxlength="300" value="{{draft}}" bindinput="setDraft" placeholder="{{editingPostId ? '修改这次分享的内容…' : '今天有什么想和论坛里的同伴分享？'}}"/>
+    <view class="picked-images" wx:if="{{postImages.length}}"><view class="picked-image-wrap" wx:for="{{postImages}}" wx:key="*this"><image class="picked-image" src="{{item}}" mode="aspectFill" data-src="{{item}}" bindtap="previewImage" /><button class="remove-image" data-index="{{index}}" catchtap="removeImage">×</button></view></view>
+    <view class="between compose-foot"><button class="image-picker" bindtap="chooseImages">＋ 图片 {{postImages.length}}/3</button><view class="publish-area"><text class="muted">{{draft.length}}/300</text><button class="primary-btn publish" bindtap="publish">{{editingPostId ? '保存修改' : '发布'}}</button></view></view>
+  </view>
+  <view class="post card" wx:for="{{posts}}" wx:key="id" wx:for-item="post">
+    <view class="post-head"><view class="author" data-owner="{{post.ownerId}}" bindtap="openUserProfile"><image wx:if="{{post.avatarUrl}}" class="avatar avatar-image" src="{{post.avatarUrl}}" mode="aspectFill" /><view wx:else class="avatar">{{post.initial}}</view><view class="author-copy"><view>{{post.author}}</view><text>{{post.sharedAt}}</text><text class="edited-time" wx:if="{{post.edited}}">编辑{{post.editedTime}}</text></view></view><button class="text-btn report {{post.isMine ? 'manage-btn' : 'more-btn'}}" data-id="{{post.id}}" bindtap="postMenu">{{post.isMine ? '管理' : '•••'}}</button></view>
+    <view class="post-category-tag">{{post.category}}</view><view class="content">{{post.content}}</view>
+    <view class="post-image-grid count-{{post.images.length}}" wx:if="{{post.images.length}}"><image wx:for="{{post.images}}" wx:key="*this" class="post-image" src="{{item}}" mode="aspectFill" data-src="{{item}}" data-urls="{{post.images}}" bindtap="previewImage" /></view>
+    <view class="post-actions"><button class="text-btn heart-btn {{post.liked ? 'liked' : ''}}" data-id="{{post.id}}" bindtap="like">{{post.liked ? '♥' : '♡'}} {{post.likes}}</button><button class="text-btn discuss-btn" data-id="{{post.id}}" bindtap="toggleComments">评论 {{post.commentCount}}</button></view>
+    <view class="discussion" wx:if="{{expandedPosts[post.id]}}"><view class="discussion-title">温柔回应</view><view class="comment" wx:for="{{post.comments}}" wx:key="id" wx:for-item="comment"><view data-owner="{{comment.ownerId}}" bindtap="openUserProfile"><image wx:if="{{comment.avatarUrl}}" class="comment-avatar image" src="{{comment.avatarUrl}}" mode="aspectFill" /><view wx:else class="comment-avatar">{{comment.initial}}</view></view><view class="comment-body"><view class="comment-meta"><text data-owner="{{comment.ownerId}}" bindtap="openUserProfile">{{comment.author}}</text><text>{{comment.sharedAt}}</text></view><view>{{comment.content}}</view></view></view><view class="empty-comments" wx:if="{{!post.comments.length}}">还没有评论，留下第一条回应吧。</view><view class="comment-composer"><input maxlength="200" value="{{commentDrafts[post.id]}}" data-id="{{post.id}}" bindinput="setCommentDraft" placeholder="回复时也请保持温柔"/><button data-id="{{post.id}}" bindtap="submitComment">发送</button></view></view>
+  </view>
+  <view class="empty-forum" wx:if="{{!loading && !posts.length && !cloudError}}">这个分类还没有分享，来发布第一条吧。</view><view class="safety">如遇紧急健康或安全问题，请及时联系专业医疗机构。</view>
+</view>

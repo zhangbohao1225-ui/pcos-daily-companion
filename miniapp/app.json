@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/checkin/index",
+    "pages/calendar/index",
+    "pages/profile/index",
+    "pages/education/index",
+    "pages/education-detail/index",
+    "pages/nutrition/index",
+    "pages/wallet/index",
+    "pages/settings/index",
+    "pages/legal/index",
+    "pages/insights/index",
+    "pages/forum/index",
+    "pages/team/index",
+    "pages/my-forum/index",
+    "pages/user-profile/index",
+    "pages/connections/index",
+    "pages/messages/index",
+    "pages/chat/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "SUTA",
+    "navigationBarBackgroundColor": "#fff8f6",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff8f6",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#9b7771",
+    "selectedColor": "#c96061",
+    "backgroundColor": "#fffaf8",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "assets/tab/home.png",
+        "selectedIconPath": "assets/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/checkin/index",
+        "text": "打卡",
+        "iconPath": "assets/tab/checkin.png",
+        "selectedIconPath": "assets/tab/checkin-active.png"
+      },
+      {
+        "pagePath": "pages/insights/index",
+        "text": "AI健康顾问",
+        "iconPath": "assets/tab/robot.png",
+        "selectedIconPath": "assets/tab/robot-active.png"
+      },
+      {
+        "pagePath": "pages/forum/index",
+        "text": "论坛",
+        "iconPath": "assets/tab/forum.png",
+        "selectedIconPath": "assets/tab/forum-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/tab/profile.png",
+        "selectedIconPath": "assets/tab/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
